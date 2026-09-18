@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import time
 import random
@@ -15,6 +16,13 @@ from PIL import Image
 import fitz  # PyMuPDF
 
 class AnyFlipDownloaderApp(ctk.CTk):
+    def resource_path(self, relative_path):
+        try:
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
+
     def __init__(self):
         super().__init__()
 
@@ -22,6 +30,11 @@ class AnyFlipDownloaderApp(ctk.CTk):
         self.title("AnyFlip PDF Downloader & Compressor")
         self.geometry("700x550")
         self.resizable(False, False)
+        
+        try:
+            self.iconbitmap(self.resource_path("app_icon.ico"))
+        except:
+            pass
         
         # Modern Dark Mode UI
         ctk.set_appearance_mode("dark")
@@ -39,6 +52,10 @@ class AnyFlipDownloaderApp(ctk.CTk):
         # Application Title
         self.title_label = ctk.CTkLabel(self, text="AnyFlip PDF Toolkit", font=ctk.CTkFont(size=24, weight="bold"))
         self.title_label.pack(pady=(15, 5))
+        
+        # Footer
+        self.footer_label = ctk.CTkLabel(self, text="© 2026 PM.Taratorn Hongcharoen | Licensed under MIT", font=ctk.CTkFont(size=12, text_color="gray"))
+        self.footer_label.pack(side="bottom", pady=5)
         
         self.tabview = ctk.CTkTabview(self, width=650, height=450)
         self.tabview.pack(padx=20, pady=10)
