@@ -54,7 +54,7 @@ class AnyFlipDownloaderApp(ctk.CTk):
         self.title_label.pack(pady=(15, 5))
         
         # Footer
-        self.footer_label = ctk.CTkLabel(self, text="© 2026 PM.Taratorn Hongcharoen | Licensed under MIT", font=ctk.CTkFont(size=12, text_color="gray"))
+        self.footer_label = ctk.CTkLabel(self, text="© 2026 PM.Taratorn Hongcharoen | Licensed under MIT", font=ctk.CTkFont(size=12), text_color="gray")
         self.footer_label.pack(side="bottom", pady=5)
         
         self.tabview = ctk.CTkTabview(self, width=650, height=450)
